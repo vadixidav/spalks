@@ -1,4 +1,3 @@
-extern crate chalk_engine as ce;
 extern crate specs;
 
 #[cfg(test)]

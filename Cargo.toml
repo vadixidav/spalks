@@ -5,5 +5,4 @@ authors = ["Geordon Worley <vadixidav@gmail.com>"]
 license = "MIT"
 
 [dependencies]
-chalk-engine = "0.6.0"
 specs = "0.12.0"
