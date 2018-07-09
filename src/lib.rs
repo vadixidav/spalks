@@ -4,9 +4,12 @@ extern crate specs;
 use slab::Slab;
 use specs::{world::Index, World};
 
+mod trilean;
+pub use trilean::Trilean;
+
 /// This trait is implemented by functors that resolve to a truth value about `M` components on `N` entities.
 pub trait Functor {
-    fn answer(&self, &World, &[Index]) -> bool;
+    fn answer(&self, &World, &[Index]) -> Trilean;
 
     // TODO: This needs to report which `Resource` and `Component` it touches for cache invalidation purposes.
 }
@@ -28,7 +31,9 @@ impl Ontology {
     }
 
     /// Determine truth of a functor given specific params.
-    fn answer(&self, world: &World, functor: usize, params: &[Index]) -> bool {
+    fn answer(&self, world: &World, functor: usize, params: &[Index]) -> Trilean {
         unimplemented!()
     }
+
+    // Register an
 }
