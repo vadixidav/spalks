@@ -19,21 +19,20 @@ pub struct Ontology {
 }
 
 impl Ontology {
-    /// Find all entities that satisfy a functor.
+    /// Find all entities that satisfy a functor with one parameter.
     ///
-    /// Asks for a functor to be satisfied given several parameter entities and an
-    /// argument positon to find all entities that satisfy the functor. This returns
-    /// a lazily evaluated iterator so that just one entity can be retrieved that satisfies
-    /// the condition if that is desired. If there is only one entity, that can save some
-    /// execution time.
-    fn existential(&self, world: &World, functor: usize, position: usize, params: &[Index]) {
+    /// If more entites are involved, build a functor which captures them and .
+    pub fn existential<F: Functor>(&self, world: &World, functor: F) {
         unimplemented!()
     }
 
     /// Determine truth of a functor given specific params.
-    fn answer(&self, world: &World, functor: usize, params: &[Index]) -> Trilean {
+    pub fn answer(&self, world: &World, functor: usize, params: &[Index]) -> Trilean {
         unimplemented!()
     }
 
-    // Register an
+    /// Register a new functor with the `Ontology` and get back a handle.
+    pub fn register(&mut self, f: Box<Functor>) -> usize {
+        self.functors.insert(f)
+    }
 }
