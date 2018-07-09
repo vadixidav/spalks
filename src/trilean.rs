@@ -28,6 +28,17 @@ impl Trilean {
     }
 }
 
+impl Not for Trilean {
+    type Output = Self;
+
+    fn not(self) -> Self {
+        match self {
+            Known(b) => Known(!b),
+            Unknown => Unknown,
+        }
+    }
+}
+
 impl BitAnd for Trilean {
     type Output = Self;
 
@@ -40,17 +51,6 @@ impl BitAnd for Trilean {
                 Known(false) => Known(false),
                 Unknown => Unknown,
             },
-        }
-    }
-}
-
-impl Not for Trilean {
-    type Output = Self;
-
-    fn not(self) -> Self {
-        match self {
-            Known(b) => Known(!b),
-            Unknown => Unknown,
         }
     }
 }
